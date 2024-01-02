@@ -1,17 +1,40 @@
 @import url('./reset.css');
 
+body {
+    background-color: #ccc;
+}
 
 .card {
     display: flex;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 9.5px );
+    -webkit-backdrop-filter: blur( 9.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .info-pokemon {
     border: 1px solid red;
 }
-
+#element {
+    list-style: none;
+}
 .name {
     display: flex;
 }
-
+#pokelist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 1%;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+}
+/* ---- Colors for each element -------  */
 .normal {
     background-color: #a6a877;
 }
