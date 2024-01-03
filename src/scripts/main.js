@@ -61,5 +61,6 @@ buttonShow.addEventListener('click', function() {
             .then(pokemonsDetails => Promise.all(pokemonsDetails))
             .then(pokemons =>  pokeList.innerHTML += pokemons.map(convertToHtml).join(''));
     }
+    input.value = '';
   });
   

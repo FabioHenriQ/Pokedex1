@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pokedex para você ver todos os principais Pokemons">
     <link rel="shortcut icon" href="./src/favicon/pokemon_7025.png" type="image/x-icon">
 
     <link rel="stylesheet" href="./src/styles/global.css">
+    <link rel="stylesheet" href="./src/styles/scrollbar.css">
     <title>Pokedex</title>
 </head>
 <body>
-    <main>
+    <main id="top">
+        <a href="#top" class="buttonUp"><img src="./src/assets/icons/Pokemon_Go_Arrow_icon-icons.com_67522.png" alt="pokemon-arrow" title="Ir para o topo"></a>
         <div class="container">
+        <img class="pokedex-background" src="./src/assets/images/R.png" alt="pokedex-background">
             <h1>Pokedex</h1>
             <div>
                 <input id="inputNumberPokemon" type="number" title="Number" placeholder="Quantidade de Pokemons" min="1">
@@ -19,10 +23,11 @@
         </div>
 
         <ul id="pokelist">
-            
+            <!-- SCRIPT -->
         </ul>
     </main>
 
+    <script src="./src/scripts/buttonUp.js" defer></script>
     <script src="./src/scripts/main.js" defer></script>
 </body>
 </html>
