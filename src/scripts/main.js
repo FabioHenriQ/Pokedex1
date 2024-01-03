@@ -1,8 +1,11 @@
-const limit = 40;
-const offset = 0;
+let limit = 10;
+let offset = 0;
+const input = document.querySelector("#inputNumberPokemon");
+const buttonShow = document.querySelector("#buttonSend")
 const pokeList = document.querySelector("#pokelist");
 const pokeElement = document.querySelector("#element");
 const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+
 
 fetch(url)
     .then(response => response.json())
@@ -11,6 +14,7 @@ fetch(url)
     .then(pokemonsDetails => Promise.all(pokemonsDetails))
     .then(pokemons =>  pokeList.innerHTML += pokemons.map(convertToHtml).join(''))
 ;
+
 
 
 function convertToHtml(pokemon) {
@@ -33,3 +37,29 @@ async function getDetailsPokemons(pokemon) {
     const listDetails = await fetch(pokemon.url);
     return await listDetails.json();
 }
+
+
+buttonShow.addEventListener('click', function() {
+    let newLimit = input.value;
+    limit = newLimit;
+    pokeList.innerHTML = '';
+
+    const newUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+    if(input.value != '' && input.value > 0) {
+        fetch(newUrl)
+            .then(response => response.json())
+            .then(listPokemon => listPokemon.results)
+            .then(pokemons => pokemons.map(getDetailsPokemons))
+            .then(pokemonsDetails => Promise.all(pokemonsDetails))
+            .then(pokemons =>  pokeList.innerHTML += pokemons.map(convertToHtml).join(''));
+    } else {
+        pokeList.innerHTML = '';
+        fetch(url)
+            .then(response => response.json())
+            .then(listPokemon => listPokemon.results)
+            .then(pokemons => pokemons.map(getDetailsPokemons))
+            .then(pokemonsDetails => Promise.all(pokemonsDetails))
+            .then(pokemons =>  pokeList.innerHTML += pokemons.map(convertToHtml).join(''));
+    }
+  });
+  
